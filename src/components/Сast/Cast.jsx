@@ -2,19 +2,23 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCast } from '../Services/Api';
 import { CastList } from './Cast.styled';
+import {Loader } from '../Loader/Loader';
 
 
 export const Cast = () => {
     const [cast, setCast] = useState([]);
     const { movieId } = useParams();
+    const [isLoading, setIsLoading] = useState(false)
 
      useEffect(() => {
     
         const fetchCastId = async () => {
         
             try {
+                setIsLoading(true);
                 const results = await fetchCast( movieId);
                 setCast(results.cast);
+                 setIsLoading(false)
                 console.log(results);
             } catch (error) {
                 console.log(error)
@@ -28,6 +32,7 @@ export const Cast = () => {
     
     return (
         <>
+             {isLoading && <Loader />} 
             <CastList>
             {cast.map(({ cast_id, name, profile_path, character }) => (
                  

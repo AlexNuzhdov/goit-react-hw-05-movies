@@ -5,7 +5,7 @@ import {Loader } from '../Loader/Loader';
 
 const HomePage = () => {
     const [trends, setTrends] = useState([]);
-    const [error, setError] = useState('');
+    // const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const HomePage = () => {
             } catch (error) {
                 console.log(error)
                 console.error('Smth wrong with homepage trends fetch');
-                setError(error.message); 
+                // setError(error.message); 
                 alert(error)
             }
         }

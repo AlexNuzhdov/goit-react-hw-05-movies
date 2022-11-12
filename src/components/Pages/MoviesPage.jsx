@@ -6,7 +6,7 @@ import {Loader } from '../Loader/Loader';
 
 
 export const MoviesPage = () => {
-const [page, setPage] = useState(1);
+// const [page, setPage] = useState(1);
 // const [movies, setMovies] = useState([]);
 const [query, setQuery] = useState('');
     // const [error, setError] = useState('');
@@ -49,7 +49,7 @@ const [query, setQuery] = useState('');
        
           try {
                 setIsLoading(true);
-                const data = await fetcBySearch(query, page);
+                const data = await fetcBySearch(query);
             //   setMovies(results);
                 setIsLoading(false)
               const foundMovies = data.results.map(({ id, title
