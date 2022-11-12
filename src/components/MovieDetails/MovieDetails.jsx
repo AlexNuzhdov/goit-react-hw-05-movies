@@ -2,7 +2,7 @@ import { moviesDetails } from '../Services/Api';
 import {Loader } from '../Loader/Loader';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Link, StyledDiv, Thumb, StyletTitle, StyletDiv, StyledImg, ThumbTitle, StyledGetYear, StyledP } from './MovieDetails.styled';
 
 export const MovieDetailsPage = () => {
@@ -40,7 +40,7 @@ const { movieId } = useParams();
     /*Функция даті релиза фильма*/
     const getYear = () => new Date(movie.release_date).getFullYear();
  
-    const { poster_path, title, release_date, vote_average, overview, genres } = movie;
+    const { poster_path, vote_average, genres } = movie;
     
     
     const path = 'https://image.tmdb.org/t/p/w300'

@@ -1,7 +1,7 @@
 import { fetcBySearch } from '../Services/Api';
 import { useState, useEffect } from 'react';
 import { SearchFormInput, SearchButton, Form } from './MoviesPage/MoviesPage.styled';
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {Loader } from '../Loader/Loader';
 
 
