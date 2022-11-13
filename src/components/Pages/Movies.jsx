@@ -1,8 +1,6 @@
 import { fetcBySearch } from '../Services/Api';
 import { useState, useEffect } from 'react';
-import { SearchFormInput, SearchButton, Form } from '../MoviesPage/Movies.styled';
-import { useLocation } from 'react-router-dom';
-import { Link } from "react-router-dom";
+// import { useLocation } from 'react-router-dom';
 import {Loader } from '../Loader/Loader';
 import { useSearchParams } from 'react-router-dom';
 import { MovieList } from '../MovieList/MovieList'
@@ -15,7 +13,7 @@ export const Movies = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const location = useLocation();
+  // const location = useLocation();
 
   const searchRequest = searchParams.get('query');
 
@@ -31,6 +29,7 @@ export const Movies = () => {
       setLoading(true);
 
       fetcBySearch(searchRequest)
+      
         .then(results => {
 
           if (!results.length) {
@@ -51,8 +50,7 @@ export const Movies = () => {
 
   
   function onSubmit(value) {
-    // setSearchParams({ query: `${value}` });
-    setSearchParams(value !== '' ? { query: value } : {});
+  setSearchParams(value !== '' ? { query: value } : {});
   }
   // onSubmit();
 
@@ -60,7 +58,7 @@ export const Movies = () => {
     <>
       <div>
         
-        
+        {loading && <Loader />}
         {error && <div>{error}</div>}
 
         <SearchForm onSearch={onSubmit} />

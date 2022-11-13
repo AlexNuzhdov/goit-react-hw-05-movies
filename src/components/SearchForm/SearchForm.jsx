@@ -10,7 +10,7 @@ export const SearchForm = ({ onSearch }) => {
   // const onChangeValue = e => {
   //   const { value } = e.target;
   //   setQuery(value);
-  // };w
+  // };
 
   const handleSubmit = e => {
       
