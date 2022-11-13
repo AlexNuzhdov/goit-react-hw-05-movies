@@ -1,9 +1,10 @@
 import { moviesDetails } from '../Services/Api';
 import {Loader } from '../Loader/Loader';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useParams } from 'react-router';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Link, StyledDiv, Thumb, StyletTitle, StyletDiv, StyledImg, ThumbTitle, StyledGetYear, StyledP } from './MovieDetails.styled';
+
 
 export const MovieDetailsPage = () => {
 
@@ -43,7 +44,7 @@ const { movieId } = useParams();
     const { poster_path, vote_average, genres } = movie;
     
     
-    const path = 'https://image.tmdb.org/t/p/w300'
+    const path = 'https://image.tmdb.org/t/p/w342'
     const url = `${path}${poster_path}`
     
     
@@ -86,20 +87,29 @@ const { movieId } = useParams();
             <h2>Additional Information</h2>
 
           <StyledDiv> 
-                <Link
+                {/* <Link
                 to={`/movies/${movieId}/cast`}>
                 <StyledP>Cast</StyledP>     
+                </Link> */}
+                <Link
+                to="cast">
+                <StyledP>Cast</StyledP>     
                 </Link>
-            
+                
             
                 <Link
-                to={`/movies/${movieId}/reviews`}>
+                to="reviews">
                 <StyledP>Reviews</StyledP>
                 </Link>
               
+                
          </StyledDiv> 
             
             <hr />
+            <Suspense fallback={null}>
+				<Outlet context={{ movieId }} />
+			</Suspense>
+
         
         </>
     )

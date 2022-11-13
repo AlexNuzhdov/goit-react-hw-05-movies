@@ -8,10 +8,10 @@ export const Navigation = () => {
         <nav>
             <StyledUl>
                 <StyledLi>
-                    <Link exact to="/">Home</Link>
+                    <Link to="/">Home</Link>
                 </StyledLi>
                 <StyledLi>
-                     <Link exact to="/movies">Movies</Link>
+                     <Link to="/movies">Movies</Link>
                 </StyledLi>
 
             </StyledUl>

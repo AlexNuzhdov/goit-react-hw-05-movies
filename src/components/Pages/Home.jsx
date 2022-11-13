@@ -3,7 +3,7 @@ import { fetchTrends } from '../Services/Api';
 import { MovieList } from '../MovieList/MovieList';
 import {Loader } from '../Loader/Loader';
 
-const HomePage = () => {
+export const Home = () => {
     const [trends, setTrends] = useState([]);
     // const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false)
@@ -44,4 +44,3 @@ const HomePage = () => {
 
 };
 
-export default HomePage;
