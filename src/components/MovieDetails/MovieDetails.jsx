@@ -2,7 +2,7 @@ import { moviesDetails } from '../Services/Api';
 import {Loader } from '../Loader/Loader';
 import { useState, useEffect, Suspense } from 'react';
 import { useParams } from 'react-router';
-import {Outlet, useLocation, useNavigate } from 'react-router-dom';
+import {Outlet, useLocation, useNavigate} from 'react-router-dom';
 import { Button, Link, StyledDiv, Thumb, StyletTitle, StyletDiv, StyledImg, ThumbTitle, StyledGetYear, StyledP } from './MovieDetails.styled';
 
 
@@ -34,9 +34,12 @@ const { movieId } = useParams();
  }, [movieId]);
     
     /*Функция возврата для кнопки*/
+   
     const location = useLocation();
     const navigate = useNavigate();
-    const onGoBack = () => navigate(location?.state?.from ?? '/');
+
+    const cameBack = () => navigate(location.state?.from ?? '/movies');
+  
 
     /*Функция даті релиза фильма*/
     const getYear = () => new Date(movie.release_date).getFullYear();
@@ -55,7 +58,7 @@ const { movieId } = useParams();
             
             {isLoading && <Loader />}
             
-        < Button onClick={ onGoBack }>
+        < Button onClick={ cameBack }>
           Go back
         </Button>
        <Thumb> 
@@ -87,18 +90,15 @@ const { movieId } = useParams();
             <h2>Additional Information</h2>
 
           <StyledDiv> 
-                {/* <Link
-                to={`/movies/${movieId}/cast`}>
-                <StyledP>Cast</StyledP>     
-                </Link> */}
+               
                 <Link
-                to="cast">
+                    to="cast" state={location.state}>
                 <StyledP>Cast</StyledP>     
                 </Link>
                 
             
                 <Link
-                to="reviews">
+                to="reviews" state={location.state}>
                 <StyledP>Reviews</StyledP>
                 </Link>
               
